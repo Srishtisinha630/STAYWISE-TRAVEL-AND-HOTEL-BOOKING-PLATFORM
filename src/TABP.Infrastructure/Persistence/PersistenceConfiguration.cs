@@ -73,11 +73,12 @@ public static class PersistenceConfiguration
     using var scope = app.ApplicationServices.CreateScope();
     
     using var context = scope.ServiceProvider.GetRequiredService<HotelBookingDbContext>();
-    
-    if (context.Database.GetPendingMigrations().Any()) {
-      context.Database.Migrate();
-    }
-    
-    return app;
+
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate();
+        }
+
+        return app;
   }
 }
